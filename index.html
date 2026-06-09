@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ============================================================
+  flowstackONE — single-file site
+  flowstackone.com
+  WhatsApp: +91 8861074290
+  Email: pramodprakash@flowstackone.com
+  GA4: paste your gtag snippet where marked below
+  ============================================================ -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>flowstackONE — The QSAAS Company</title>
+  <meta name="description" content="flowstackONE builds fully automated AI receptionists for Indian SMBs — one vertical at a time. InkDesk is Vertical 01." />
+  <link rel="canonical" href="https://flowstackone.com/" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'><rect x='0' y='4' width='5' height='20' fill='%23FAFAF7'/><rect x='8' y='4' width='1.5' height='20' fill='%23FAFAF7'/><rect x='13' y='4' width='5' height='20' fill='%23FAFAF7'/></svg>" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://flowstackone.com/" />
+  <meta property="og:title"       content="flowstackONE — The QSAAS Company" />
+  <meta property="og:description" content="flowstackONE builds fully automated AI receptionists for Indian SMBs — one vertical at a time. InkDesk is Vertical 01." />
+  <meta property="og:image"       content="https://flowstackone.com/og-image.png" />
+  <meta name="twitter:card"       content="summary_large_image" />
+
+  <!-- GA4: paste your gtag snippet here when ready -->
+
+  <!-- Fonts — non-blocking -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap" rel="stylesheet" />
+  </noscript>
+
+  <style>
+    /* ─── RESET ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0B0D0E;
+      --text:    #FAFAF7;
+      --muted:   #7A8087;
+      --surface: #14171A;
+      --border:  #2A3036;
+      --font:    'Montserrat', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ─── UTILITIES ─────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container--narrow { max-width: 900px; }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .section-headline {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--text);
+      color: var(--bg);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 14px 32px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-pill:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-pill--lg {
+      font-size: 16px;
+      padding: 18px 44px;
+    }
+
+    .btn-pill--outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-pill--outline:hover { border-color: var(--text); opacity: 1; }
+
+    /* scroll fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── NAV ───────────────────────────────────── */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,13,14,0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .logo-wordmark {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+    .logo-wordmark span { font-weight: 200; letter-spacing: 0.14em; }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--text); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--border);
+      background: rgba(11,13,14,0.97);
+    }
+    .mobile-menu a {
+      padding: 16px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--text); }
+    .mobile-menu.open { display: flex; }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── SECTION BASE ──────────────────────────── */
+    section { padding: 96px 0; border-top: 1px solid var(--border); }
+
+    /* ─── HERO ──────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 100px 0 80px;
+      border-top: none;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: clamp(100px,22vw,300px);
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(250,250,247,0.04);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -0.04em;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .hero-signal {
+      position: absolute;
+      top: 0; right: -60px;
+      width: 55%;
+      max-width: 600px;
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero-headline {
+      font-size: clamp(36px,5.5vw,72px);
+      line-height: 1.08;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+    .hero-headline .light { font-weight: 200; color: var(--muted); }
+
+    .hero-sub {
+      font-size: clamp(15px,1.6vw,18px);
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* ─── QSAAS ─────────────────────────────────── */
+    #qsaas .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 2px;
+      margin: 52px 0 40px;
+    }
+
+    .qsaas-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+    }
+    .qsaas-card:first-child { border-radius: 4px 0 0 4px; }
+    .qsaas-card:last-child  { border-radius: 0 4px 4px 0; }
+
+    .card-icon { width: 40px; height: 40px; margin-bottom: 20px; }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .qsaas-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    .qsaas-insight {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 820px;
+      border-left: 1.5px solid var(--border);
+      padding-left: 24px;
+    }
+
+    /* ─── PROBLEM ───────────────────────────────── */
+    #problem .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin: 52px 0 60px;
+      align-items: start;
+    }
+
+    #problem .body-copy { font-size: 16px; color: var(--muted); line-height: 1.85; }
+
+    .notif-stack { display: flex; flex-direction: column; gap: 12px; }
+
+    .notif-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .notif-header { display: flex; align-items: center; gap: 8px; }
+    .notif-dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; opacity: 0.55; flex-shrink: 0; }
+    .notif-type { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .notif-text { font-size: 14px; font-weight: 600; }
+    .notif-time { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .pull-quote {
+      text-align: center;
+      font-size: clamp(20px,2.8vw,32px);
+      font-weight: 700;
+      line-height: 1.3;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ─── ENGINE ────────────────────────────────── */
+    #engine .engine-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 520px;
+      margin-top: 12px;
+      margin-bottom: 52px;
+    }
+
+    .engine-layout {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .engine-col h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .engine-col li {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(42,48,54,0.5);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .engine-col li::before { content: '—'; color: var(--border); flex-shrink: 0; font-size: 12px; margin-top: 2px; }
+
+    .engine-visual { display: flex; justify-content: center; align-items: flex-start; padding-top: 32px; }
+
+    /* ─── VERTICAL 01 ───────────────────────────── */
+    #vertical01 .v01-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 52px;
+    }
+
+    #vertical01 .v01-body { font-size: 16px; color: var(--muted); line-height: 1.85; margin-bottom: 36px; }
+    .v01-visual { display: flex; justify-content: center; align-items: center; }
+
+    /* ─── INKDESK PRODUCT SECTION ───────────────── */
+    #inkdesk {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    /* divider rule inside section */
+    #inkdesk .id-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 48px;
+    }
+
+    /* hero sub-section */
+    .inkdesk-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-bottom: 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .inkdesk-hero-copy .id-headline {
+      font-size: clamp(32px,4.5vw,56px);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+    .inkdesk-hero-copy .id-headline .light {
+      font-weight: 200;
+      color: var(--muted);
+      display: block;
+    }
+
+    .inkdesk-hero-copy .id-body {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 16px 0 32px;
+    }
+
+    .inkdesk-hero-copy .micro {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .inkdesk-hero-visual { display: flex; justify-content: center; }
+
+    /* three steps */
+    .id-steps {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 2px;
+      margin-bottom: 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .id-step {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 36px 28px;
+    }
+    .id-step:first-child { border-radius: 4px 0 0 4px; }
+    .id-step:last-child  { border-radius: 0 4px 4px 0; }
+
+    .id-step-num {
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -0.04em;
+    }
+    .id-step-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+    .id-step-body  { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+    /* reframe */
+    .id-reframe {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 80px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .id-reframe-old {
+      font-size: clamp(18px,2.8vw,30px);
+      font-weight: 700;
+      color: var(--muted);
+      display: inline-block;
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .id-reframe-old::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      top: 50%;
+      height: 1.5px;
+      background: var(--muted);
+      transform: translateY(-50%);
+    }
+
+    .id-reframe-new {
+      font-size: clamp(22px,3.4vw,40px);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .id-reframe-support { font-size: 15px; color: var(--muted); line-height: 1.8; }
+
+    /* pricing */
+    .id-pricing { text-align: center; }
+
+    .id-pricing-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 52px 40px;
+      max-width: 480px;
+      margin: 40px auto 0;
+    }
+
+    .id-pricing-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .id-price {
+      font-size: clamp(44px,8vw,72px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .id-per { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+
+    .id-features {
+      text-align: left;
+      margin-bottom: 36px;
+    }
+    .id-features li {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .id-features li::before { content: '—'; color: var(--border); flex-shrink: 0; }
+    .id-features li:last-child { border-bottom: none; }
+
+    .id-no-surprise {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── TEAM ──────────────────────────────────── */
+    #team .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 52px;
+    }
+
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      border-radius: 4px;
+    }
+    .tc-portrait { width: 56px; height: 56px; margin-bottom: 20px; }
+    .tc-name { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .tc-role {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tc-bio { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+    /* ─── CONTACT ───────────────────────────────── */
+    #contact .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 52px;
+      align-items: start;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      padding: 14px 18px;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--muted); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: rgba(250,250,247,0.4); }
+    .contact-form textarea { min-height: 130px; resize: vertical; }
+
+    .contact-aside { display: flex; flex-direction: column; gap: 28px; }
+    .aside-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .aside-link {
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .aside-link:hover { opacity: 0.7; }
+    .aside-block { padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+
+    /* ─── FOOTER ────────────────────────────────── */
+    #footer { border-top: 1px solid var(--border); padding: 48px 0; }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-tagline { font-size: 12px; color: var(--muted); margin-top: 10px; font-style: italic; }
+    .footer-copy    { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+    .footer-links { display: flex; gap: 28px; align-items: center; }
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ─── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 900px) {
+      #qsaas .cards-grid { grid-template-columns: 1fr; gap: 2px; }
+      .qsaas-card:first-child { border-radius: 4px 4px 0 0; }
+      .qsaas-card:last-child  { border-radius: 0 0 4px 4px; }
+
+      #problem .two-col { grid-template-columns: 1fr; gap: 36px; }
+
+      .engine-layout { grid-template-columns: 1fr; gap: 32px; }
+      .engine-visual { order: -1; }
+
+      #vertical01 .v01-layout { grid-template-columns: 1fr; gap: 40px; }
+      .v01-visual { order: -1; }
+
+      .inkdesk-hero { grid-template-columns: 1fr; gap: 40px; }
+      .inkdesk-hero-visual { order: -1; }
+
+      .id-steps { grid-template-columns: 1fr; gap: 2px; }
+      .id-step:first-child { border-radius: 4px 4px 0 0; }
+      .id-step:last-child  { border-radius: 0 0 4px 4px; }
+
+      .id-pricing-card { padding: 36px 24px; }
+
+      #team .team-grid { grid-template-columns: 1fr; }
+      #contact .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+      .footer-inner { flex-direction: column; gap: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 64px 0; }
+      .hero-ctas { flex-direction: column; }
+      .btn-pill { justify-content: center; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<header id="nav" role="banner">
+  <div class="container">
+    <nav class="nav-inner" aria-label="Main navigation">
+
+      <a href="#hero" class="logo" aria-label="flowstackONE home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect x="0"  y="4" width="5"   height="20" fill="#FAFAF7"/>
+          <rect x="8"  y="4" width="1.5" height="20" fill="#FAFAF7"/>
+          <rect x="13" y="4" width="5"   height="20" fill="#FAFAF7"/>
+        </svg>
+        <span class="logo-wordmark">flowstack<span>ONE</span></span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#qsaas">What is QSAAS</a></li>
+        <li><a href="#inkdesk">InkDesk</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu"
+              aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="#qsaas">What is QSAAS</a>
+      <a href="#inkdesk">InkDesk</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section id="hero" aria-label="Hero" style="border-top:none;">
+
+  <div class="hero-bg-text" aria-hidden="true">MISSED</div>
+
+  <svg class="hero-signal" viewBox="0 0 540 600" fill="none" aria-hidden="true">
+    <circle cx="270" cy="300" r="2.5" fill="#FAFAF7"/>
+    <circle cx="270" cy="300" r="22"  stroke="#FAFAF7" stroke-width="0.8"/>
+    <circle cx="270" cy="300" r="50"  stroke="#FAFAF7" stroke-width="0.5"/>
+    <circle cx="270" cy="300" r="90"  stroke="#FAFAF7" stroke-width="0.3"/>
+    <circle cx="270" cy="300" r="140" stroke="#FAFAF7" stroke-width="0.2"/>
+    <line x1="0"   y1="80"  x2="248" y2="296" stroke="#FAFAF7" stroke-width="0.6"/>
+    <line x1="0"   y1="150" x2="248" y2="302" stroke="#FAFAF7" stroke-width="0.4"/>
+    <line x1="0"   y1="220" x2="248" y2="300" stroke="#FAFAF7" stroke-width="0.6"/>
+    <line x1="0"   y1="380" x2="248" y2="304" stroke="#FAFAF7" stroke-width="0.4"/>
+    <line x1="0"   y1="460" x2="248" y2="306" stroke="#FAFAF7" stroke-width="0.6"/>
+    <line x1="80"  y1="0"   x2="268" y2="278" stroke="#FAFAF7" stroke-width="0.3"/>
+    <line x1="200" y1="0"   x2="270" y2="278" stroke="#FAFAF7" stroke-width="0.5"/>
+    <line x1="370" y1="0"   x2="272" y2="278" stroke="#FAFAF7" stroke-width="0.3"/>
+    <line x1="292" y1="300" x2="540" y2="120" stroke="#FAFAF7" stroke-width="0.5"/>
+    <line x1="292" y1="302" x2="540" y2="300" stroke="#FAFAF7" stroke-width="0.7"/>
+    <line x1="292" y1="304" x2="540" y2="460" stroke="#FAFAF7" stroke-width="0.4"/>
+    <circle cx="120" cy="193" r="2" fill="#FAFAF7" opacity="0.6"/>
+    <circle cx="60"  cy="113" r="2" fill="#FAFAF7" opacity="0.4"/>
+    <circle cx="90"  cy="330" r="1.5" fill="#FAFAF7" opacity="0.4"/>
+  </svg>
+
+  <div class="container">
+    <div class="hero-content fade-in">
+      <p class="eyebrow">QSAAS — Quick SaaS as a Service</p>
+      <h1 class="hero-headline">
+        One AI receptionist.<br />
+        One SMB vertical.<br />
+        <span class="light">Every 1–2 quarters.</span>
+      </h1>
+      <p class="hero-sub">
+        flowstackONE builds fully automated, end-to-end AI receptionists for Indian SMBs —
+        one vertical at a time. InkDesk is Vertical 01.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn-pill"
+          href="https://wa.me/918861074290?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20InkDesk"
+          target="_blank" rel="noopener noreferrer">Talk to us →</a>
+        <a class="btn-pill btn-pill--outline" href="#inkdesk">See InkDesk →</a>
+        <a class="btn-pill btn-pill--outline"
+          href="https://app.flowstackone.com"
+          target="_blank" rel="noopener noreferrer">Launch Dashboard →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     WHAT IS QSAAS
+════════════════════════════════════════════ -->
+<section id="qsaas" aria-labelledby="qsaas-headline">
+  <div class="container">
+    <p class="eyebrow fade-in">WHAT IS QSAAS</p>
+    <h2 class="section-headline fade-in" id="qsaas-headline">A new category of software.</h2>
+
+    <div class="cards-grid">
+      <article class="qsaas-card fade-in">
+        <svg class="card-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="16" stroke="#FAFAF7" stroke-width="1.2"/>
+          <line x1="20" y1="10" x2="20" y2="20" stroke="#FAFAF7" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="20" y1="20" x2="28" y2="25" stroke="#FAFAF7" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="1.5" fill="#FAFAF7"/>
+          <line x1="20" y1="6"  x2="20" y2="9"  stroke="#FAFAF7" stroke-width="1.2"/>
+          <line x1="34" y1="20" x2="31" y2="20" stroke="#FAFAF7" stroke-width="1.2"/>
+          <line x1="6"  y1="20" x2="9"  y2="20" stroke="#FAFAF7" stroke-width="1.2"/>
+          <line x1="20" y1="34" x2="20" y2="31" stroke="#FAFAF7" stroke-width="1.2"/>
+        </svg>
+        <p class="card-label">Quick</p>
+        <p>Built and deployed in 60–90 days per vertical. Not 18 months of enterprise software.</p>
+      </article>
+
+      <article class="qsaas-card fade-in">
+        <svg class="card-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="8"  y="18" width="24" height="16" stroke="#FAFAF7" stroke-width="1.2"/>
+          <rect x="15" y="26" width="5"  height="8"  stroke="#FAFAF7" stroke-width="1.2"/>
+          <polygon points="6,18 20,8 34,18" stroke="#FAFAF7" stroke-width="1.2" fill="none"/>
+          <rect x="11" y="21" width="4" height="5" stroke="#FAFAF7" stroke-width="1"/>
+          <rect x="25" y="21" width="4" height="5" stroke="#FAFAF7" stroke-width="1"/>
+        </svg>
+        <p class="card-label">SMB-Native</p>
+        <p>Priced for small businesses. Solves the one job that matters. No bloat, no setup complexity.</p>
+      </article>
+
+      <article class="qsaas-card fade-in">
+        <svg class="card-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M8 14 A14 14 0 0 1 34 20" stroke="#FAFAF7" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          <path d="M32 26 A14 14 0 0 1 6 20" stroke="#FAFAF7" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          <polyline points="32,9 34,14 28,14" stroke="#FAFAF7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <polyline points="8,31 6,26 12,26" stroke="#FAFAF7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <p class="card-label">Repeatable</p>
+        <p>Same AI engine. New vertical config. New sector served every 1–2 quarters.</p>
+      </article>
+    </div>
+
+    <p class="qsaas-insight fade-in">
+      "AI has made vertical SMB software cheap enough to build, fast enough to ship, and
+      affordable enough that an SMB can pay for it. The timing is now."
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     THE PROBLEM
+════════════════════════════════════════════ -->
+<section id="problem" aria-labelledby="problem-headline">
+  <div class="container">
+    <p class="eyebrow fade-in">THE PROBLEM</p>
+    <h2 class="section-headline fade-in" id="problem-headline">
+      Every service SMB has the same<br />front desk problem.
+    </h2>
+
+    <div class="two-col">
+      <div class="body-copy fade-in">
+        <p>The owner is doing the work. The phone rings — they can't stop. The customer waits
+        10 seconds then books the competitor.</p>
+        <br />
+        <p>A receptionist costs ₹8–15k a month, takes leave, clocks out at six. The calls don't.</p>
+      </div>
+
+      <div class="notif-stack fade-in">
+        <article class="notif-card">
+          <div class="notif-header"><div class="notif-dot"></div><span class="notif-type">Missed Call</span></div>
+          <p class="notif-text">during a session</p>
+          <p class="notif-time">9:43 PM</p>
+        </article>
+        <article class="notif-card">
+          <div class="notif-header"><div class="notif-dot"></div><span class="notif-type">DM Unanswered</span></div>
+          <p class="notif-text">how much for a forearm piece?</p>
+          <p class="notif-time">9:31 PM</p>
+        </article>
+        <article class="notif-card">
+          <div class="notif-header"><div class="notif-dot"></div><span class="notif-type">DM Unanswered</span></div>
+          <p class="notif-text">still taking bookings?</p>
+          <p class="notif-time">11:08 PM</p>
+        </article>
+      </div>
+    </div>
+
+    <p class="pull-quote fade-in">
+      "This isn't a tattoo-studio problem.<br />
+      It's a 63-million SMB problem in India."
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     THE ENGINE
+════════════════════════════════════════════ -->
+<section id="engine" aria-labelledby="engine-headline">
+  <div class="container">
+    <p class="eyebrow fade-in">THE QSAAS ENGINE</p>
+    <h2 class="section-headline fade-in" id="engine-headline">One engine. Every vertical.</h2>
+    <p class="engine-sub fade-in">What changes per vertical is config, not architecture.</p>
+
+    <div class="engine-layout">
+      <div class="engine-col fade-in">
+        <h4>Reusable Core — built once</h4>
+        <ul>
+          <li>Multilingual voice AI</li>
+          <li>Post-call WhatsApp summary</li>
+          <li>Lead capture dashboard</li>
+          <li>Onboarding system</li>
+          <li>Billing infrastructure</li>
+          <li>BSP / WhatsApp API integration</li>
+        </ul>
+      </div>
+
+      <div class="engine-visual fade-in">
+        <svg width="90" height="280" viewBox="0 0 90 280" fill="none" aria-hidden="true">
+          <circle cx="45" cy="50" r="10" stroke="#FAFAF7" stroke-width="1.2"/>
+          <text x="45" y="54" text-anchor="middle" font-size="8" fill="#7A8087" font-family="Montserrat,sans-serif" font-weight="700">CORE</text>
+          <line x1="45" y1="60" x2="45" y2="120" stroke="#FAFAF7" stroke-width="1.2"/>
+          <line x1="45" y1="120" x2="18" y2="170" stroke="#FAFAF7" stroke-width="0.8"/>
+          <line x1="45" y1="120" x2="45" y2="170" stroke="#FAFAF7" stroke-width="0.8"/>
+          <line x1="45" y1="120" x2="72" y2="170" stroke="#FAFAF7" stroke-width="0.8"/>
+          <circle cx="18" cy="175" r="4" stroke="#FAFAF7" stroke-width="1"/>
+          <circle cx="45" cy="175" r="4" stroke="#FAFAF7" stroke-width="1"/>
+          <circle cx="72" cy="175" r="4" stroke="#FAFAF7" stroke-width="1"/>
+          <text x="18" y="192" text-anchor="middle" font-size="7" fill="#7A8087" font-family="Montserrat,sans-serif">V01</text>
+          <text x="45" y="192" text-anchor="middle" font-size="7" fill="#7A8087" font-family="Montserrat,sans-serif">V02</text>
+          <text x="72" y="192" text-anchor="middle" font-size="7" fill="#7A8087" font-family="Montserrat,sans-serif">V03</text>
+          <line x1="18" y1="179" x2="10" y2="220" stroke="#FAFAF7" stroke-width="0.5" opacity="0.4"/>
+          <line x1="18" y1="179" x2="26" y2="220" stroke="#FAFAF7" stroke-width="0.5" opacity="0.4"/>
+          <line x1="45" y1="179" x2="37" y2="220" stroke="#FAFAF7" stroke-width="0.5" opacity="0.4"/>
+          <line x1="45" y1="179" x2="53" y2="220" stroke="#FAFAF7" stroke-width="0.5" opacity="0.4"/>
+          <line x1="72" y1="179" x2="64" y2="220" stroke="#FAFAF7" stroke-width="0.5" opacity="0.4"/>
+          <line x1="72" y1="179" x2="80" y2="220" stroke="#FAFAF7" stroke-width="0.5" opacity="0.4"/>
+          <circle cx="45" cy="238" r="1.5" fill="#FAFAF7" opacity="0.3"/>
+          <circle cx="45" cy="250" r="1.5" fill="#FAFAF7" opacity="0.2"/>
+          <circle cx="45" cy="262" r="1.5" fill="#FAFAF7" opacity="0.1"/>
+        </svg>
+      </div>
+
+      <div class="engine-col fade-in">
+        <h4>Per-Vertical Config — 60–90 days</h4>
+        <ul>
+          <li>Vertical-specific FAQ + agent personality</li>
+          <li>Booking flow logic</li>
+          <li>Pricing calibration</li>
+          <li>GTM channel setup</li>
+          <li>Regulatory terminology</li>
+          <li>Co-branded dashboard</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     INKDESK — FULL PRODUCT SECTION
+════════════════════════════════════════════ -->
+<section id="inkdesk" aria-labelledby="inkdesk-headline">
+  <div class="container container--narrow">
+
+    <!-- Section label -->
+    <p class="eyebrow fade-in">VERTICAL 01 — INKDESK</p>
+
+    <!-- ── Hero sub-section ──────────────────── -->
+    <div class="inkdesk-hero">
+
+      <div class="inkdesk-hero-copy fade-in">
+        <p class="id-headline">
+          Live in two days.
+          <span class="light">You do almost nothing.</span>
+        </p>
+        <p class="id-body">
+          InkDesk answers the calls and messages tattoo studios miss while the artist is working —
+          books the appointment, sends the owner a WhatsApp summary.
+          Tell us how your studio runs, once, for 20 minutes. We set up the rest.
+        </p>
+        <a class="btn-pill btn-pill--lg"
+           href="https://wa.me/918861074290?text=Hi%2C%20I%27d%20like%20to%20book%20my%20InkDesk%20setup%20call"
+           target="_blank" rel="noopener noreferrer">Book my setup →</a>
+        <p class="micro">One short call. We handle everything after.</p>
+      </div>
+
+      <!-- Tattoo machine vs phone SVG -->
+      <div class="inkdesk-hero-visual fade-in" aria-hidden="true">
+        <svg width="320" height="220" viewBox="0 0 320 220" fill="none">
+          <!-- Machine -->
+          <rect x="18" y="20" width="76" height="108" rx="7" stroke="#FAFAF7" stroke-width="1.2"/>
+          <rect x="28" y="10" width="56" height="18"  rx="4" stroke="#FAFAF7" stroke-width="1"/>
+          <rect x="30" y="34" width="52" height="36"  rx="4" stroke="#FAFAF7" stroke-width="0.9"/>
+          <line x1="35" y1="44" x2="77" y2="44" stroke="#FAFAF7" stroke-width="0.7"/>
+          <line x1="35" y1="50" x2="77" y2="50" stroke="#FAFAF7" stroke-width="0.7"/>
+          <line x1="35" y1="56" x2="77" y2="56" stroke="#FAFAF7" stroke-width="0.7"/>
+          <line x1="35" y1="62" x2="77" y2="62" stroke="#FAFAF7" stroke-width="0.7"/>
+          <rect x="42" y="128" width="28" height="42" rx="5" stroke="#FAFAF7" stroke-width="1.2"/>
+          <line x1="42" y1="138" x2="70" y2="138" stroke="#FAFAF7" stroke-width="0.5" opacity="0.5"/>
+          <line x1="42" y1="145" x2="70" y2="145" stroke="#FAFAF7" stroke-width="0.5" opacity="0.5"/>
+          <line x1="42" y1="152" x2="70" y2="152" stroke="#FAFAF7" stroke-width="0.5" opacity="0.5"/>
+          <line x1="56" y1="170" x2="56" y2="180" stroke="#FAFAF7" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="52" y1="180" x2="60" y2="180" stroke="#FAFAF7" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M25 95 Q6 115 6 160" stroke="#FAFAF7" stroke-width="0.8" stroke-dasharray="5 3" fill="none"/>
+          <circle cx="28" cy="105" r="3.5" stroke="#FAFAF7" stroke-width="0.8"/>
+          <circle cx="84" cy="105" r="3.5" stroke="#FAFAF7" stroke-width="0.8"/>
+          <text x="56" y="200" text-anchor="middle" font-size="7.5" fill="#7A8087" font-family="Montserrat,sans-serif" letter-spacing="2">MACHINE</text>
+
+          <!-- VS -->
+          <line x1="112" y1="85" x2="208" y2="85" stroke="#2A3036" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="160" y="80" text-anchor="middle" font-size="9" fill="#7A8087" font-family="Montserrat,sans-serif" font-weight="700">VS</text>
+
+          <!-- Phone -->
+          <rect x="210" y="12" width="95" height="162" rx="13" stroke="#FAFAF7" stroke-width="1.2"/>
+          <rect x="220" y="27" width="75" height="128" rx="3" stroke="#FAFAF7" stroke-width="0.7"/>
+          <rect x="243" y="17" width="30" height="6" rx="3" fill="#FAFAF7" opacity="0.22"/>
+          <rect x="245" y="183" width="40" height="3.5" rx="2" fill="#FAFAF7" opacity="0.22"/>
+          <rect x="228" y="37" width="59" height="52" rx="5" stroke="#2A3036" stroke-width="0.8" fill="#14171A"/>
+          <circle cx="241" cy="54" r="5" stroke="#FAFAF7" stroke-width="0.8" opacity="0.5"/>
+          <line x1="241" y1="51" x2="241" y2="54" stroke="#FAFAF7" stroke-width="0.8" opacity="0.5"/>
+          <line x1="241" y1="54" x2="244" y2="57" stroke="#FAFAF7" stroke-width="0.8" opacity="0.5"/>
+          <rect x="251" y="47" width="28" height="5" rx="2" fill="#2A3036"/>
+          <rect x="251" y="57" width="20" height="4" rx="2" fill="#2A3036"/>
+          <text x="258" y="83" text-anchor="middle" font-size="6.5" fill="#7A8087" font-family="Montserrat,sans-serif" font-weight="700" letter-spacing="1.5">MISSED</text>
+          <rect x="228" y="100" width="59" height="40" rx="5" stroke="#2A3036" stroke-width="0.8" fill="#14171A"/>
+          <rect x="236" y="108" width="44" height="5" rx="2" fill="#2A3036"/>
+          <rect x="236" y="118" width="30" height="4" rx="2" fill="#2A3036"/>
+          <!-- ringing arcs -->
+          <path d="M308 60 Q320 80 308 100" stroke="#FAFAF7" stroke-width="1"   fill="none" opacity="0.5"/>
+          <path d="M312 50 Q328 80 312 110" stroke="#FAFAF7" stroke-width="0.8" fill="none" opacity="0.3"/>
+          <text x="257" y="200" text-anchor="middle" font-size="7.5" fill="#7A8087" font-family="Montserrat,sans-serif" letter-spacing="2">MISSED CALL</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ── How it works ──────────────────────── -->
+    <p class="eyebrow fade-in" style="margin-bottom:32px;">HOW IT WORKS</p>
+    <div class="id-steps">
+      <article class="id-step fade-in">
+        <p class="id-step-num">01</p>
+        <h3 class="id-step-title">We set it up</h3>
+        <p class="id-step-body">You talk for 20 minutes. We build your AI receptionist — your greeting, your FAQs, multilingual. You do nothing.</p>
+      </article>
+      <article class="id-step fade-in">
+        <p class="id-step-num">02</p>
+        <h3 class="id-step-title">It goes live</h3>
+        <p class="id-step-body">Within 48 hours. We do a test call together so you can hear it working.</p>
+      </article>
+      <article class="id-step fade-in">
+        <p class="id-step-num">03</p>
+        <h3 class="id-step-title">You stop missing bookings</h3>
+        <p class="id-step-body">Every call caught. Every DM answered. Summary sent to your WhatsApp the moment a call ends.</p>
+      </article>
+    </div>
+
+    <!-- ── Reframe ───────────────────────────── -->
+    <div class="id-reframe fade-in">
+      <svg width="60" height="14" viewBox="0 0 60 14" fill="none" style="margin:0 auto 28px" aria-hidden="true">
+        <line x1="0" y1="7" x2="22" y2="7" stroke="#2A3036" stroke-width="1"/>
+        <rect x="25" y="3" width="10" height="8" stroke="#FAFAF7" stroke-width="0.8" opacity="0.3"/>
+        <line x1="38" y1="7" x2="60" y2="7" stroke="#2A3036" stroke-width="1"/>
+      </svg>
+      <p class="id-reframe-old">"You don't need a receptionist."</p>
+      <p class="id-reframe-new">"You need your calls answered."</p>
+      <p class="id-reframe-support">A hire costs ₹8–15k a month and clocks out at six. The calls don't.</p>
+    </div>
+
+    <!-- ── Pricing ───────────────────────────── -->
+    <div class="id-pricing fade-in">
+      <p class="eyebrow">PRICING</p>
+      <h3 class="section-headline" style="font-size:clamp(24px,3vw,38px);">One price. No surprises.</h3>
+
+      <div class="id-pricing-card">
+        <p class="id-pricing-badge">InkDesk — Monthly Plan</p>
+        <p class="id-price">₹5,999</p>
+        <p class="id-per">/ month</p>
+        <ul class="id-features">
+          <li>500 minutes included</li>
+          <li>Multilingual — answers in the caller's language</li>
+          <li>WhatsApp summary after every call</li>
+          <li>No setup fee. No contract.</li>
+        </ul>
+        <a class="btn-pill btn-pill--lg"
+           href="https://wa.me/918861074290?text=Hi%2C%20I%27d%20like%20to%20book%20my%20InkDesk%20setup%20call"
+           target="_blank" rel="noopener noreferrer">Get started →</a>
+        <p class="id-no-surprise">No setup fee · No contract · Cancel anytime</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TEAM
+════════════════════════════════════════════ -->
+<section id="team" aria-labelledby="team-headline">
+  <div class="container">
+    <p class="eyebrow fade-in">THE TEAM</p>
+    <h2 class="section-headline fade-in" id="team-headline">Operator + Builder.</h2>
+
+    <div class="team-grid">
+      <article class="team-card fade-in">
+        <svg class="tc-portrait" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+          <circle cx="28" cy="20" r="10" stroke="#FAFAF7" stroke-width="1.2"/>
+          <path d="M8 52 Q8 36 28 36 Q48 36 48 52" stroke="#FAFAF7" stroke-width="1.2" fill="none"/>
+          <line x1="6" y1="6" x2="50" y2="50" stroke="#2A3036" stroke-width="0.6"/>
+        </svg>
+        <p class="tc-name">Pramod Prakash</p>
+        <p class="tc-role">Co-founder — Brand, GTM &amp; Demand</p>
+        <p class="tc-bio">16+ years brand leadership · Ogilvy &amp; Mather · RAPP/DDB Mudra Group · Deep SMB go-to-market · MBA in Marketing</p>
+      </article>
+
+      <article class="team-card fade-in">
+        <svg class="tc-portrait" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+          <circle cx="28" cy="20" r="10" stroke="#FAFAF7" stroke-width="1.2"/>
+          <path d="M8 52 Q8 36 28 36 Q48 36 48 52" stroke="#FAFAF7" stroke-width="1.2" fill="none"/>
+          <circle cx="44" cy="12" r="3" stroke="#FAFAF7" stroke-width="0.8"/>
+          <line x1="44" y1="12" x2="38" y2="20" stroke="#2A3036" stroke-width="0.6"/>
+        </svg>
+        <p class="tc-name">Anand Edwin</p>
+        <p class="tc-role">Co-founder — Product &amp; Engineering</p>
+        <p class="tc-bio">Full-stack engineer · AI-agent builder · Voice AI integration specialist · Inya.ai / n8n / Supabase · Bangalore-based</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════ -->
+<section id="contact" aria-labelledby="contact-headline">
+  <div class="container">
+    <p class="eyebrow fade-in">GET IN TOUCH</p>
+    <h2 class="section-headline fade-in" id="contact-headline">Let's talk.</h2>
+
+    <div class="contact-layout">
+      <form class="contact-form fade-in" id="contact-form">
+        <input  type="text"  id="cf-name"    name="name"    placeholder="Name"    required autocomplete="name" />
+        <input  type="email" id="cf-email"   name="email"   placeholder="Email"   required autocomplete="email" />
+        <textarea            id="cf-message" name="message" placeholder="Message" required></textarea>
+        <button type="submit" class="btn-pill">Send →</button>
+      </form>
+
+      <aside class="contact-aside fade-in">
+        <div class="aside-block">
+          <p class="aside-label">WhatsApp</p>
+          <a class="aside-link"
+             href="https://wa.me/918861074290?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20InkDesk"
+             target="_blank" rel="noopener noreferrer">Chat with us directly →</a>
+        </div>
+        <div>
+          <p class="aside-label">Email</p>
+          <a class="aside-link" href="mailto:pramodprakash@flowstackone.com">
+            pramodprakash@flowstackone.com
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="#hero" class="logo" aria-label="flowstackONE home">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="0"  y="4" width="5"   height="20" fill="#FAFAF7"/>
+            <rect x="8"  y="4" width="1.5" height="20" fill="#FAFAF7"/>
+            <rect x="13" y="4" width="5"   height="20" fill="#FAFAF7"/>
+          </svg>
+          <span class="logo-wordmark">flowstack<span>ONE</span></span>
+        </a>
+        <p class="footer-tagline">Built for the businesses no one builds for.</p>
+        <p class="footer-copy">© 2025 flowstackONE. All rights reserved.</p>
+        <p class="footer-copy" style="margin-top:4px;">flowstackone.com</p>
+      </div>
+
+      <nav aria-label="Footer navigation">
+        <ul class="footer-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#inkdesk">InkDesk</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Hamburger ───────────────────────────── */
+  const btn  = document.getElementById('hamburger-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  menu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    })
+  );
+
+  /* ── Fade-in on scroll ───────────────────── */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+  /* Hero fires immediately */
+  document.querySelectorAll('#hero .fade-in').forEach(el => el.classList.add('visible'));
+
+  /* ── Active nav link on scroll ──────────── */
+  const sections = document.querySelectorAll('section[id]');
+  const navAs    = document.querySelectorAll('.nav-links a');
+
+  const sio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => sio.observe(s));
+
+  /* ── Contact form → mailto ───────────────── */
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('cf-name').value.trim();
+    const email   = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    const subject = encodeURIComponent('flowstackONE enquiry from ' + name);
+    const body    = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+    window.location.href = 'mailto:pramodprakash@flowstackone.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
